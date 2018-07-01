@@ -1,9 +1,15 @@
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={"/api/*": {"origins": "*"}})
 
-@app.route('/', methods=['GET'])
+@app.route('/api/', methods=['GET'])
+
 def index_page():
-	return 'hello world'
+	resObj = {
+		'content': 'Hello, flask-react'
+	}
+	return jsonify(resObj)
 
 app.run(port=5000, debug=True)
