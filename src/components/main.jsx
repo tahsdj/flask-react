@@ -9,7 +9,7 @@ class Main extends React.Component{
 		}
 	}
 	componentWillMount() {
-		fetch('http://localhost:5000/api/').then( res => {
+		fetch('http://192.168.99.100:2000/api/hello-world').then( res => {
 			console.log(res)
 			return res.json()
 		}).then( data => {

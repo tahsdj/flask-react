@@ -4,12 +4,16 @@ from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app, resources={"/api/*": {"origins": "*"}})
 
-@app.route('/api/', methods=['GET'])
+@app.route('/', methods=['GET'])
+def hello_flask():
+	return 'hello flask'
 
-def index_page():
+
+@app.route('/api/hello-world', methods=['GET'])
+def say_hello():
 	resObj = {
 		'content': 'Hello, flask-react'
 	}
 	return jsonify(resObj)
 
-app.run(port=5000, debug=True)
+app.run(host='0.0.0.0', port=80)
