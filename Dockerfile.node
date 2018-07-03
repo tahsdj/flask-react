@@ -1,4 +1,4 @@
-FROM python:3.6.2
+FROM node:8.1.0
 
 # set the work dir at /app
 WORKDIR /app
@@ -7,14 +7,15 @@ WORKDIR /app
 ADD . /app
 
 # install required packages
-RUN pip install -r requirements.txt
+RUN npm install
 
+RUN npm rebuild node-sass --force
 
-# let port 80 accessible from outside
-EXPOSE 80
+# let port 1234 accessible from outside
+EXPOSE 1234
 
 # define env variable
-ENV NAME World
+ENV node world
 
 # when docker running, do the command 'python app.py'
-CMD ["python", "app.py"]
+CMD ["npm", "run", "start"]
